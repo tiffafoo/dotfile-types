@@ -1,0 +1,31 @@
+{
+  "name": "properties2ts",
+  "version": "1.0.0",
+  "description": "Transform .properties files into TypeScript interfaces",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "properties",
+    "to",
+    "typescript",
+    "ts",
+    "ini",
+    "properties2ts",
+    "interface",
+    "transform",
+    "make",
+    "into"
+  ],
+  "author": "Tiffany Le-Nguyen",
+  "license": "MIT",
+  "dependencies": {
+    "json-ts": "^1.6.4",
+    "lodash.set": "^4.3.2",
+    "meow": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
