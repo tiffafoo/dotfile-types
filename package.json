@@ -14,6 +14,9 @@
   },
   "keywords": [
     "properties",
+    "env",
+    "generate",
+    "generator",
     "to",
     "typescript",
     "ts",
