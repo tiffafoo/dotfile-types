@@ -5,6 +5,9 @@ including nested types.
 Currently uses [json-ts](https://github.com/shakyshane/json-ts), and could technically work with flow.
 
 ## Usage Example
+**Check out [/test/fixtures/expected](https://github.com/sirMerr/ini-ts/tree/master/test/fixtures/expected) for more example outputs.**
+
+CLI simple usage: `$ ini-ts <file_path> <out_path>`
 ```
 $ ini-ts l10n.properties interfaces.d.ts
 ```
