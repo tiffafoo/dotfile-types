@@ -8,7 +8,6 @@ node_js:
 script:
   - npm run build
   - npm test -- --coverage
-  - npx codecov
 
 deploy:
   - provider: script
