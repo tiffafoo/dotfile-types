@@ -11,43 +11,61 @@ import path from "path";
  * @param {string} outPath - Location where you want the interface to be outputted
  * @param {JsonTsOptions?} options
  */
-export default function iniToTS(
+export default async function iniToTS(
   filePath: string,
   outPath: string,
   options?: JsonTsOptions
 ) {
-  console.log("filePath", filePath, "outPath", outPath, "options", options);
   const holderObj = {};
 
-  const rl = readline.createInterface({
-    input: fs.createReadStream(filePath, "utf-8"),
-    crlfDelay: Infinity
-  });
+  try {
+    fs.accessSync(filePath);
+  } catch (err) {
+    console.error(
+      "❌Could not access:",
+      filePath,
+      " . Please check if it exists"
+    );
+    return;
+  }
 
-  // Read lines asynchronously and return each line (string) of the file
-  rl.on("line", (line: string) => {
-    // Ignore Comments
-    if (line.startsWith("#")) {
-      return;
-    }
+  try {
+    const rl = readline.createInterface({
+      input: fs.createReadStream(filePath, "utf-8"),
+      crlfDelay: Infinity
+    });
 
-    const indexOfAssignment = line.indexOf("=");
-    const keysString = line.substring(0, indexOfAssignment);
+    // Read lines asynchronously and return each line (string) of the file
+    rl.on("line", (line: string) => {
+      // Ignore Comments
+      if (line.startsWith("#")) {
+        return;
+      }
 
-    // Sets empty string at path of object.
-    set(holderObj, keysString, "");
-  });
+      const indexOfAssignment = line.indexOf("=");
+      const keysString = line.substring(0, indexOfAssignment);
 
-  // When all the lines have been read, transform the object into interfaces
-  rl.on("close", () => {
-    const interfaces = json2ts(JSON.stringify(holderObj), options);
+      // Sets empty string at path of object.
+      set(holderObj, keysString, "");
+    });
 
-    if (outPath) {
-      // Create outPath regardless of if it exists
-      fs.mkdirSync(path.dirname(outPath), { recursive: true });
-      // Overwrite outPath with interfaces
-      fs.writeFileSync(outPath, interfaces);
-      console.log(`✨ Successfully wrote types to ${outPath}`);
-    }
-  });
+    rl.on("close", () => {
+      const interfaces = json2ts(JSON.stringify(holderObj), options);
+
+      if (outPath) {
+        if (/\//.test(outPath))
+          // Create outPath regardless of if it exists (node 10+)
+          fs.mkdirSync(path.dirname(outPath), { recursive: true });
+
+        // Overwrite outPath with interfaces
+        fs.writeFileSync(outPath, interfaces);
+        console.log(`✨ Successfully wrote types to ${outPath}`);
+      }
+    });
+  } catch (err) {
+    console.error(
+      "❌ Could not write type. Make sure you gave correct input, output and options!",
+      err
+    );
+  }
 }

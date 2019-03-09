@@ -1,16 +1,23 @@
 {
   "name": "ini-ts",
   "version": "1.0.0",
-  "description": "Transform .properties files into TypeScript interfaces",
-  "main": "index.js",
+  "author": "Tiffany Le-Nguyen <letiffany.nguyen@gmail.com> (github.com/sirMerr)",
+  "license": "MIT",
+  "description": "Transform .properties, .env and other key-value pair ini files into TypeScript interfaces",
+  "files": [
+    "lib",
+    "*.js"
+  ],
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel ./*.ts --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "build:js": "babel ./*.ts --out-dir lib --extensions \".ts,.tsx\"",
     "test": "jest",
-    "start": "node lib/cli.js"
+    "start": "ts-node cli.ts"
   },
   "keywords": [
     "properties",
@@ -27,8 +34,6 @@
     "make",
     "into"
   ],
-  "author": "Tiffany Le-Nguyen",
-  "license": "MIT",
   "dependencies": {
     "json-ts": "^1.6.4",
     "lodash.set": "^4.3.2",
@@ -48,9 +53,8 @@
     "@types/node": "^10.12.20",
     "@types/rimraf": "^2.0.2",
     "execa": "^1.0.0",
-    "jest": "^24.0.0",
-    "rimraf": "^2.6.3",
-    "ts-jest": "^23.10.5",
+    "jest": "^24.3.1",
+    "ts-node": "^8.0.3",
     "typescript": "^3.2.4"
   }
 }

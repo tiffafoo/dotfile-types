@@ -43,7 +43,7 @@ const { input, flags: options, showHelp } = cli;
 /**
  * Runs the iniToTS command
  */
-async function main() {
+function main() {
   if (input.length === 0) {
     showHelp();
     return;

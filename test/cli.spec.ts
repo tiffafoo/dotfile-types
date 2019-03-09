@@ -1,25 +1,35 @@
 import execa, { Options } from "execa";
-import rimraf from "rimraf";
+import fs from "fs";
+import { makeTempDir } from "./utils";
+import path from "path";
 
-const tempDir = "test/fixtures/tempDir";
-const examplePath = "test/fixtures/example.properties";
-const main = (args: string[], options: Options) => execa("node", args, options);
+const tempDir = makeTempDir();
+const examplePath = path.resolve(__dirname, "./fixtures/example.properties");
+const expectedFolderPath = path.resolve(__dirname, "./fixtures/expected");
+
+const main = (args: string[], options?: Options) =>
+  execa("node", args, options);
 
 describe("ini-ts CLI", () => {
-  afterAll(() => rimraf.sync(tempDir));
+  it("should create a tempdir/simple.d.ts", () => {
+    main(["lib/cli.js", examplePath, path.join(tempDir, "simple.d.ts")])
+      .then(() => {
+        const expected = fs.readFileSync(
+          path.join(expectedFolderPath, "/simple.d.ts")
+        );
 
-  it("should create a tempdir/simple.d.ts", async () => {
-    try {
-      await main(
-        [
-          "lib/cli.js",
-          "test/fixtures/example.properties",
-          "test/fixtures/tempDir/simple.d.ts"
-        ],
-        {}
-      );
-    } catch (err) {
-      console.log(err);
-    }
+        const actual = fs.readFileSync(path.join(tempDir, "simple.d.ts"));
+
+        expect(actual).toEqual(expected);
+      })
+      .catch(err => {
+        console.error(err);
+      }); // Errors due to a spawn bug
+  });
+
+  it("should not create a file when given a non-existing input", () => {
+    expect(
+      main(["lib/cli.js", "idontexist", path.join(tempDir, "simple.d.ts")])
+    ).rejects.toThrowError();
   });
 });
