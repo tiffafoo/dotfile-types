@@ -53,9 +53,14 @@ export default async function iniToTS(
       const interfaces = json2ts(JSON.stringify(holderObj), options);
 
       if (outPath) {
-        if (/\//.test(outPath))
-          // Create outPath regardless of if it exists (node 10+)
-          fs.mkdirSync(path.dirname(outPath), { recursive: true });
+        // Check if going to a different directory or absolute
+        if (/\//.test(outPath)) {
+          const dirNameOutPath = path.dirname(outPath);
+          // This works in Node 9
+          if (!fs.existsSync(dirNameOutPath)) {
+            fs.mkdirSync(dirNameOutPath);
+          }
+        }
 
         // Overwrite outPath with interfaces
         fs.writeFileSync(outPath, interfaces);

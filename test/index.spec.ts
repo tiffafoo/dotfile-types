@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { makeTempDir } from "./utils";
 
+console.log = jest.fn();
 console.error = jest.fn();
 
 const tempDir = makeTempDir();
