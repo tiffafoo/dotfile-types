@@ -1,6 +1,6 @@
 {
   "name": "ini-ts",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "author": "Tiffany Le-Nguyen <letiffany.nguyen@gmail.com> (github.com/sirMerr)",
   "license": "MIT",
   "description": "Transform .properties, .env and other key-value pair ini files into TypeScript interfaces",
@@ -17,7 +17,8 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel ./*.ts --out-dir lib --extensions \".ts,.tsx\"",
     "test": "jest",
-    "start": "ts-node cli.ts"
+    "start": "ts-node cli.ts",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "properties",
@@ -55,6 +56,14 @@
     "execa": "^1.0.0",
     "jest": "^24.3.1",
     "ts-node": "^8.0.3",
-    "typescript": "^3.2.4"
+    "typescript": "^3.2.4",
+    "semantic-release": "^15.13.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sirMerr/ini-ts.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
