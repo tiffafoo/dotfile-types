@@ -22,9 +22,7 @@ describe("ini-ts CLI", () => {
 
         expect(actual).toEqual(expected);
       })
-      .catch(err => {
-        console.error(err);
-      }); // Errors due to a spawn bug
+      .catch(err => fail);
   });
 
   it("should not create a file when given a non-existing input", () => {

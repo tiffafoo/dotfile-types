@@ -6,6 +6,7 @@ node_js:
   - "9"
 
 script:
+  - npm build
   - npm test -- --coverage
   - npx codecov
 
