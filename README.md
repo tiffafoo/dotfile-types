@@ -1,18 +1,22 @@
-# ini-ts
-Generates TypeScript interfaces from `.properties`, and other `key-value` pair [`ini`](https://en.wikipedia.org/wiki/INI_file) files,
+# dotfile-types
+
+Generates TypeScript interfaces from `.env`, `.properties`, `.ini`, and other `key-value` pair files,
 including nested types.
 
 Currently uses [json-ts](https://github.com/shakyshane/json-ts), and could technically work with flow.
 
 ## Usage Example
-**Check out [/test/fixtures/expected](https://github.com/sirMerr/ini-ts/tree/master/test/fixtures/expected) for more example outputs.**
 
-CLI simple usage: `$ ini-ts <file_path> <out_path>`
+**Check out [/test/fixtures/expected](https://github.com/sirMerr/dotfile-types/tree/master/test/fixtures/expected) for more example outputs.**
+
+CLI simple usage: `$ dotfile-types <file_path> <out_path>`
+
 ```
-$ ini-ts l10n.properties interfaces.d.ts
+$ dotfile-types l10n.properties interfaces.d.ts
 ```
 
 Tranforms this:
+
 ```ini
 # l10n.properties
 
@@ -29,24 +33,25 @@ hats.buyMe=See all {0} properties in {1}
 ```
 
 Into this:
+
 ```ts
 // interface.d.ts
 
 interface IRootObject {
-    universe: IUniverse;
-    hats: IHats;
+  universe: IUniverse;
+  hats: IHats;
 }
 interface IUniverse {
-    attribution: IAttribution;
+  attribution: IAttribution;
 }
 interface IAttribution {
-    wikimediaLink: string;
-    wikimediaAlt: string;
+  wikimediaLink: string;
+  wikimediaAlt: string;
 }
 interface IHats {
-    color: string;
-    imageAlt: string;
-    expensive: string;
-    buyMe: string;
+  color: string;
+  imageAlt: string;
+  expensive: string;
+  buyMe: string;
 }
 ```

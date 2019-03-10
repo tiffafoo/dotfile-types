@@ -1,15 +1,16 @@
 language: node_js
 
 node_js:
-  - "node"
-  - "10"
   - "9"
+  - "10"
+  - "node"
 
-script:
-  - npm run build
-  - npm test -- --coverage
-
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: npx semantic-release
+jobs:
+  include:
+    - stage: release
+      node_js: "node"
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release

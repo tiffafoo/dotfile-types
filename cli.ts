@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 "use strict";
 import meow from "meow";
-import iniToTS from "./index";
+import dotfileToTS from "./index";
 
 const cli = meow(
   `
 	Usage
-		$ ini-ts [<file>] [<outDir>]
+		$ dotfile-types [<file>] [<outDir>]
 
 	Options
 		--namespace=<namespace_name>	interfaces will be wrapped in a namespace
@@ -14,10 +14,10 @@ const cli = meow(
 		--rootName=<rootname_string>	overide the RootObject name of the top-level interface
 	
 	Examples
-		$ ini-ts US_EN.properties
-		$ ini-ts .env types
-		$ ini-ts --namespace API
-		$ ini-ts --prefix "" --rootName "Product"
+		$ dotfile-types US_EN.properties
+		$ dotfile-types .env types
+		$ dotfile-types --namespace API
+		$ dotfile-types --prefix "" --rootName "Product"
 	`,
   {
     flags: {
@@ -41,7 +41,7 @@ const cli = meow(
 const { input, flags: options, showHelp } = cli;
 
 /**
- * Runs the iniToTS command
+ * Runs the dotfileToTS command
  */
 function main() {
   if (input.length === 0) {
@@ -49,7 +49,7 @@ function main() {
     return;
   }
 
-  iniToTS(input[0], input[1], options);
+  dotfileToTS(input[0], input[1], options);
 }
 
 main();

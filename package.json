@@ -1,9 +1,9 @@
 {
-  "name": "ini-ts",
-  "version": "0.0.0-development",
+  "name": "dotfile-types",
+  "version": "0.0.0-semantic-release",
   "author": "Tiffany Le-Nguyen <letiffany.nguyen@gmail.com> (github.com/sirMerr)",
   "license": "MIT",
-  "description": "Transform .properties, .env and other key-value pair ini files into TypeScript interfaces",
+  "description": "Transform .properties, .env and other key-value pair dotfile files into TypeScript interfaces",
   "files": [
     "lib",
     "*.js"
@@ -61,9 +61,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sirMerr/ini-ts.git"
-  },
-  "publishConfig": {
-    "access": "restricted"
+    "url": "https://github.com/sirMerr/dotfile-types.git"
   }
 }

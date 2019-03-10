@@ -11,7 +11,7 @@ import path from "path";
  * @param {string} outPath - Location where you want the interface to be outputted
  * @param {JsonTsOptions?} options
  */
-export default async function iniToTS(
+export default async function dotfileToTS(
   filePath: string,
   outPath: string,
   options?: JsonTsOptions

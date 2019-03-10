@@ -1,4 +1,4 @@
-workflow "Test ini-ts" {
+workflow "Test dotfile-types" {
   on = "push"
   resolves = ["npm test"]
 }

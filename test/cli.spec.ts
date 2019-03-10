@@ -10,7 +10,7 @@ const expectedFolderPath = path.resolve(__dirname, "./fixtures/expected");
 const main = (args: string[], options?: Options) =>
   execa("node", args, options);
 
-describe("ini-ts CLI", () => {
+describe("dotfile-types CLI", () => {
   it("should create a tempdir/simple.d.ts", () => {
     main(["lib/cli.js", examplePath, path.join(tempDir, "simple.d.ts")])
       .then(() => {
