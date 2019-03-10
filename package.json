@@ -5,8 +5,7 @@
   "license": "MIT",
   "description": "Transform .properties, .env and other key-value pair dotfile files into TypeScript interfaces",
   "files": [
-    "lib",
-    "*.js"
+    "lib"
   ],
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
@@ -18,7 +17,8 @@
     "build:js": "babel ./*.ts --out-dir lib --extensions \".ts,.tsx\"",
     "test": "jest",
     "start": "ts-node cli.ts",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "properties",
