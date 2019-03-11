@@ -80,7 +80,7 @@ $ dotfile-types --help
     $ dotfile-types --prefix "" --rootName "Product"
 ```
 
-### Usage (API)
+## Usage (API)
 ```
 $ npm install dotfile-types
 ```
@@ -89,3 +89,47 @@ import dotfileToTS from "dotfile-types";
 
 dotfileToTS("l10n.properties","interfaces.d.ts", {namespace: "Translations"});
 ```
+
+```ts
+// Usage
+dotfileToTS(
+  filePath: string, // path where the input is located
+  outPath: string, // path where the output will be saved (including name of file)
+  options?: JsonTsOptions // object of Options (namespace, flow, prefix, rootName...)
+)
+```
+
+## Options
+All options are ported from [json-ts](https://github.com/shakyShane/json-ts).
+ - **namespace: string** - if provided, interfaces will be wrapped in a namespace (see below)
+    ```bash
+    # usage
+    json-ts <filename> --namespace <namespace_name> 
+    
+    # example
+    json-ts data/my-file.json --namespace API
+    ```
+ - **flow: boolean** - output types in Flow format.
+    ```bash
+    # usage
+    json-ts <filename> --flow 
+    
+    # example
+    json-ts data/my-file.json --flow
+    ```
+ - **prefix: string** - override the `I` prefix on interface names
+    ```bash
+    # usage
+    json-ts <filename> --prefix <prefix_string> 
+    
+    # example (remove prefix)
+    json-ts data/my-file.json --prefix ""
+    ```
+ - **rootName: string** - override the `RootObject` name of the top-level interface
+    ```bash
+    # usage
+    json-ts <filename> --rootName <rootname_string> 
+    
+    # example
+    json-ts data/my-file.json --rootName "Product"
+    ```
