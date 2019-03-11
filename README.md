@@ -12,13 +12,13 @@ Currently uses [json-ts](https://github.com/shakyshane/json-ts), and could techn
 CLI simple usage: `$ dotfile-types <file_path> <out_path>`
 
 ```
-$ dotfile-types l10n.properties interfaces.d.ts
+$ npx dotfile-types l10n.properties interfaces.d.ts
 ```
 
 Tranforms this:
 
-```ini
-# l10n.properties
+```
+# ./l10n.properties
 
 # What ever happened to the good ol days when it was yesterday
 universe.attribution.wikimediaLink=<a href="{0}">Photo</a>
@@ -35,7 +35,7 @@ hats.buyMe=See all {0} properties in {1}
 Into this:
 
 ```ts
-// interface.d.ts
+// ./interface.d.ts
 
 interface IRootObject {
   universe: IUniverse;
@@ -54,4 +54,38 @@ interface IHats {
   expensive: string;
   buyMe: string;
 }
+```
+
+## Usage (CLI)
+```
+$ npx dotfile-types
+```
+```
+$ npm install -g dotfile-types
+```
+
+```
+Usage
+$ dotfile-types <file> <outDir>
+$ dotfile-types --help
+  Options
+    --namespace=<namespace_name>	interfaces will be wrapped in a namespace
+    --prefix=<prefix_string>			override the I prefix on interface names
+    --rootName=<rootname_string>	overide the RootObject name of the top-level interface
+
+  Examples
+    $ dotfile-types US_EN.properties
+    $ dotfile-types .env types
+    $ dotfile-types --namespace API
+    $ dotfile-types --prefix "" --rootName "Product"
+```
+
+### Usage (API)
+```
+$ npm install dotfile-types
+```
+```ts
+import dotfileToTS from "dotfile-types";
+
+dotfileToTS("l10n.properties","interfaces.d.ts", {namespace: "Translations"});
 ```
