@@ -104,32 +104,32 @@ All options are ported from [json-ts](https://github.com/shakyShane/json-ts).
  - **namespace: string** - if provided, interfaces will be wrapped in a namespace (see below)
     ```bash
     # usage
-    json-ts <filename> --namespace <namespace_name> 
+    $ dotfile-types <file_path> <out_path> --namespace <namespace_name> 
     
     # example
-    json-ts data/my-file.json --namespace API
+    $ dotfile-types ata/my-file.env ./myFile.d.ts --namespace API
     ```
  - **flow: boolean** - output types in Flow format.
     ```bash
     # usage
-    json-ts <filename> --flow 
+    $ dotfile-types <file_path> <out_path> --flow 
     
     # example
-    json-ts data/my-file.json --flow
+    $ dotfile-types ata/my-file.properties ./myFile.d.ts --flow
     ```
  - **prefix: string** - override the `I` prefix on interface names
     ```bash
     # usage
-    json-ts <filename> --prefix <prefix_string> 
+    $ dotfile-types <file_path> <out_path> --prefix <prefix_string> 
     
     # example (remove prefix)
-    json-ts data/my-file.json --prefix ""
+    $ dotfile-types ata/my-file.ini ./myFile.d.ts --prefix ""
     ```
  - **rootName: string** - override the `RootObject` name of the top-level interface
     ```bash
     # usage
-    json-ts <filename> --rootName <rootname_string> 
+    $ dotfile-types <file_path> <out_path> --rootName <rootname_string> 
     
     # example
-    json-ts data/my-file.json --rootName "Product"
+    $ dotfile-types data/my-file.properties ./myFile.d.ts --rootName "Product"
     ```
