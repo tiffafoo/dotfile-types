@@ -1,4 +1,4 @@
-# dotfile-types
+# dotfile-types 📝
 
 Generates TypeScript interfaces from `.env`, `.properties`, `.ini`, and other `key-value` pair files,
 including nested types.
