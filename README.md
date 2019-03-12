@@ -107,7 +107,7 @@ All options are ported from [json-ts](https://github.com/shakyShane/json-ts).
     $ dotfile-types <file_path> <out_path> --namespace <namespace_name> 
     
     # example
-    $ dotfile-types ata/my-file.env ./myFile.d.ts --namespace API
+    $ dotfile-types .env ./myFile.d.ts --namespace API
     ```
  - **flow: boolean** - output types in Flow format.
     ```bash
@@ -115,7 +115,7 @@ All options are ported from [json-ts](https://github.com/shakyShane/json-ts).
     $ dotfile-types <file_path> <out_path> --flow 
     
     # example
-    $ dotfile-types ata/my-file.properties ./myFile.d.ts --flow
+    $ dotfile-types ./my-file.properties ./myFile.d.ts --flow
     ```
  - **prefix: string** - override the `I` prefix on interface names
     ```bash
@@ -123,7 +123,7 @@ All options are ported from [json-ts](https://github.com/shakyShane/json-ts).
     $ dotfile-types <file_path> <out_path> --prefix <prefix_string> 
     
     # example (remove prefix)
-    $ dotfile-types ata/my-file.ini ./myFile.d.ts --prefix ""
+    $ dotfile-types ./my-file.ini ./myFile.d.ts --prefix ""
     ```
  - **rootName: string** - override the `RootObject` name of the top-level interface
     ```bash
